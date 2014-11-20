@@ -1,6 +1,6 @@
 
 angular
     .module("pelis")
-    .controller("PelisCtrl", function($scope, $http) {
+    .controller("PelisCtrl", function($scope) {
 
     });
