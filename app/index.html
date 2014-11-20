@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="pelis">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vendor/angular.js"></script>
+    <script src="vendor/angular-route.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-route-segment/1.3.3/angular-route-segment.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/PelisCtrl.js"></script>
+    <script src="scripts/controllers/SeriesCtrl.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+</head>
+<body>
+    <nav>
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="#/pelis">Películas</a>
+            </li>
+            <li>
+                <a href="#/series">Series</a>
+            </li>
+        </ul>
+    </nav>
+    <section app-view-segment="0"></section>
+
+</body>
+</html>
