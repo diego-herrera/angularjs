@@ -1,20 +1,26 @@
 
 angular
     .module("pelis")
-    .controller("PelisProxCtrl", function($scope) {
+    .controller("PelisProxCtrl", function($scope, $http) {
 
-        // Con $on nos suscribimos a eventos.
-        $scope.$on("MiEvento", function(event, datos) {
+        // $http es un servicio de AngularJS para hacer
+        // peticiones a recursos. Funciona igual que $.ajax()
+        // de jQuery. $http retorna una "promesa", por eso debemos
+        // pasar dos parámetros a modo de callback.
+        $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=826b523c417cbb888744b13031d846c2&language=es").then(
 
-            alert(datos);
-        });
+            // La primera función se ejecuta cuando la
+            // petición fue bien.
+            function(datos) {
 
-        // Con emit lanzamos eventos hacia arriba
-        // en la jerarquía de $scopes.
-        $scope.lanzarEmit = function() {
+                $scope.peliculas = datos.data.results;
+            },
 
-            $scope.$emit("MiOtroEvento", "Hacia arriba!!");
+            // La segunda función se ejecuta cuando la
+            // petición fue mal.
+            function() {
 
-        };
-
+                alert("Hubo un error");
+            }
+        );
     });
