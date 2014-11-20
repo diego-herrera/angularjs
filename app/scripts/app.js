@@ -5,7 +5,19 @@
 angular.module("pelis", ["ngRoute", "view-segment", "route-segment"]);
 
 // Configuramos el routing de nuestra aplicación.
-angular.module("pelis").config(["$routeSegmentProvider", function($routeSegmentProvider) {
+angular
+    .module("pelis")
+    .config(["$routeSegmentProvider",
+        "$routeProvider",
+        function($routeSegmentProvider, $routeProvider) {
+
+    // Con la función 'otherwise' de $routeProvider
+    // establecemos la ruta a navegar por defecto
+    // en caso de que el usuario introduzca una que
+    // no existe.
+    $routeProvider.otherwise({
+        redirectTo: "/pelis/proximamente"
+    });
 
     // Establecemos la relación ruta / segmento.
     // Los segmentos son las zonas del DOM donde se cargarán de

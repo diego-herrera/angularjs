@@ -12,6 +12,7 @@
     <!-- Cargamos el app.js, que es donde se inicia y configura la aplicación -->
     <script src="scripts/app.js"></script>
     <!-- Cargamos todos los controladores, servicios, filtros y directivas -->
+    <script src="scripts/controllers/IndexCtrl.js"></script>
     <script src="scripts/controllers/PelisCtrl.js"></script>
     <script src="scripts/controllers/SeriesCtrl.js"></script>
     <script src="scripts/controllers/PelisProxCtrl.js"></script>
@@ -21,12 +22,21 @@
 </head>
 <body>
     <!-- Navegación principal de la aplicación -->
-    <nav>
+    <!-- Puesto que esta pieza de DOM está en nuestro index.html, y no
+    hay enrutamiento alguno en este punto, establecemos el controlador
+    que le dota defuncionalidad de manera manual con la directiva
+    ng-controller -->
+    <nav ng-controller="IndexCtrl">
         <ul class="nav nav-tabs">
-            <li>
+            <!-- ng-class es una directiva que nos permite establecer
+             clases CSS de manera dinámica. En este caso, vamos a establecer
+             la clase 'active' siempre que 'rutaEsPeliculas()' resuelva como
+             true. En caso de resolver como false, no se aplica dicha clase -->
+            <li ng-class="{ active: rutaEsPeliculas() }">
                 <a href="#/pelis">Películas</a>
             </li>
-            <li>
+            <!-- Aquí ocurre igual que en el caso anterior -->
+            <li ng-class="{ active: rutaEsSeries() }">
                 <a href="#/series">Series</a>
             </li>
         </ul>
