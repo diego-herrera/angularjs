@@ -3,15 +3,23 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <!-- Cargamos la librería de AngularJS -->
     <script src="vendor/angular.js"></script>
+    <!-- Cargamos la librería ngRoute para el routing de la aplicación -->
     <script src="vendor/angular-route.js"></script>
+    <!-- Cargamos la librería angular-route-segment para potenciar el routing que nos da ngRoute -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-route-segment/1.3.3/angular-route-segment.min.js"></script>
+    <!-- Cargamos el app.js, que es donde se inicia y configura la aplicación -->
     <script src="scripts/app.js"></script>
+    <!-- Cargamos todos los controladores, servicios, filtros y directivas -->
     <script src="scripts/controllers/PelisCtrl.js"></script>
     <script src="scripts/controllers/SeriesCtrl.js"></script>
+    <script src="scripts/controllers/PelisProxCtrl.js"></script>
+    <script src="scripts/controllers/SeriesHoyCtrl.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css"/>
 </head>
 <body>
+    <!-- Navegación principal de la aplicación -->
     <nav>
         <ul class="nav nav-tabs">
             <li>
@@ -22,7 +30,7 @@
             </li>
         </ul>
     </nav>
+    <!-- Segmento donde se muestran las vistas de Películas y Series -->
     <section app-view-segment="0"></section>
-
 </body>
 </html>
