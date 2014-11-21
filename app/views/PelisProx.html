@@ -2,7 +2,7 @@
     <tbody>
         <!-- Con la directiva ng-repeat iteramos por un conjunto
         de elementos -->
-        <tr ng-repeat="pelicula in peliculas">
+        <tr ng-repeat="pelicula in peliculas | orderBy:'release_date'">
             <td>
                 <img ng-src="{{ obtenerRutaImagen(pelicula.poster_path) }}" />
             </td>
@@ -11,7 +11,9 @@
                     {{ pelicula.original_title }}
                 </a>
             </td>
-            <td>{{ pelicula.release_date }}</td>
+            <!-- Usamos el filtro 'fechaEstreno' para darle formato
+            a la fecha de estreno de cada película -->
+            <td>{{ pelicula.release_date | fechaEstreno }}</td>
         </tr>
     </tbody>
 </table>
