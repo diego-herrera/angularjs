@@ -4,7 +4,7 @@
         de elementos -->
         <tr ng-repeat="pelicula in peliculas">
             <td>
-                <img ng-src="{{ obtenerRutaImagen(pelicula.backdrop_path) }}" />
+                <img ng-src="{{ obtenerRutaImagen(pelicula.poster_path) }}" />
             </td>
             <td>
                 <a href="" ng-click="verDetalle(pelicula.id)">
