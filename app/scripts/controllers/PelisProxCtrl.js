@@ -1,24 +1,11 @@
 
 angular
     .module("pelis")
-    .controller("PelisProxCtrl", function($scope, $http, ApiService) {
+    .controller("PelisProxCtrl", function($scope, ApiService, Peliculas) {
 
-        // Aquí usamos el servicio ApiService que hemos creado.
-        // Pasamos el path concreto de la API que queremos usar
-        // y nos devuelve una promesa con el resultado de la
-        // petición.
-        ApiService
-            .obtenerDatosApi("movie/upcoming")
-            .then(
-                // Como fue bien, establecemos en $scope.peliculas
-                // el valor obtenido, que es la colección de películas.
-                function(datos) {
-                    $scope.peliculas = datos.data.results;
-                },
-                function() {
-                    alert("Hubo un error.")
-                }
-            );
+        // La colección de películas nos llega ya resuelta
+        // como dependencia.
+        $scope.peliculas = Peliculas.data.results;
 
         // Esta función obtiene la ruta de la imagen en
         // base a los datos que nos devuelve la API de

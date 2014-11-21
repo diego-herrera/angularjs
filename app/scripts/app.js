@@ -38,7 +38,21 @@ angular
     // el segmento 'pelis.prox'.
     $routeSegmentProvider.within("pelis").segment("prox", {
         controller: "PelisProxCtrl",
-        templateUrl: "views/PelisProx.html"
+        templateUrl: "views/PelisProx.html",
+        // Utilizamos el objeto 'resolve' para resolver dependencias
+        // que inyectar al controlador. En este caso, la lista de
+        // películas debería llegar resuelta al controlador, no ser
+        // él quien la resuelva. Por tanto, hacemos la llamada en
+        // este punto. Como veis, utilizamos para este resolve la
+        // inyección de dependencias 'completa', la que necesita
+        // el array de strings + function de dependencias. Todas
+        // aquellas dependencias que se deseen resolver en este
+        // punto tienen que devolver una promesa.
+        resolve: {
+            Peliculas:["ApiService", function(ApiService) {
+                return ApiService.obtenerDatosApi("movie/upcoming");
+            }]
+        }
     });
 
     // Configuramos el controlador y vista que se usarán en
