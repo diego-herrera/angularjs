@@ -1,0 +1,12 @@
+
+<tr>
+    <td>
+        <img ng-src="{{ obtenerRutaImagen(peli.poster_path) }}" />
+    </td>
+    <td>
+        <a href="" ng-click="selecciona(peli.id)">
+            {{ peli.original_title }}
+        </a>
+    </td>
+    <td>{{ peli.release_date | fechaEstreno }}</td>
+</tr>

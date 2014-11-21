@@ -1,19 +1,13 @@
 <table class="table table-striped">
     <tbody>
-        <!-- Con la directiva ng-repeat iteramos por un conjunto
-        de elementos -->
-        <tr ng-repeat="pelicula in peliculas | orderBy:'release_date'">
-            <td>
-                <img ng-src="{{ obtenerRutaImagen(pelicula.poster_path) }}" />
-            </td>
-            <td>
-                <a href="" ng-click="verDetalle(pelicula.id)">
-                    {{ pelicula.original_title }}
-                </a>
-            </td>
-            <!-- Usamos el filtro 'fechaEstreno' para darle formato
-            a la fecha de estreno de cada película -->
-            <td>{{ pelicula.release_date | fechaEstreno }}</td>
+        <!-- Utilizamos nuestra directiva como atributo
+        de elemento. Le pasamos la película por la que se
+        itera, y una función donde recibir la notificación
+        de selección -->
+        <tr list-item ng-repeat="pelicula in peliculas"
+                   peli="pelicula"
+                   al-seleccionar="verDetalle(itemId)">
+
         </tr>
     </tbody>
 </table>

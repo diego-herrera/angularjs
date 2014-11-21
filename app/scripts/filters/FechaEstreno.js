@@ -2,15 +2,15 @@
 
 angular
     .module("pelis")
-    .filter("fechaEstreno", function() {
+    .filter("fechaEstreno", function($filter) {
 
-        // Los filtros siempre retornan funciones.
-        // En este caso, establecemos como formato
-        // el texto 'Se estrena en' más la fecha de
-        // película.
+        // Esto no es usual, pero se puede hacer igual.
+        // Estamos usando un filtro dentro de otro.
+        // Por ejemplo, el filtro 'date', que viene con
+        // AngularJS de serie.
         return function(fecha) {
-
-            return "Se estrena en " + fecha;
+            var nuevaFecha = $filter("date")(fecha, "dd/MM/yyyy");
+            return "Se estrena en " + nuevaFecha;
         };
 
     });
