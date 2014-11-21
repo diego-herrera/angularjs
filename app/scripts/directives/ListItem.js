@@ -32,6 +32,32 @@ angular
             // serán accesibles por la vista.
             link: function(scope) {
 
+                // Con $watch lo que hacemos es monitorizar el
+                // valor de una variable. Cuando ese valor cambia,
+                // se ejecuta el callback que hemos establecido.
+                scope.$watch(
+                    // Como primer parámetro del $watch, pasamos una
+                    // función que hace 'return' de la variable que
+                    // queremos monitorizar.
+                    function() {
+
+                        return scope.miCheck;
+                    },
+                    // Como segundo parámetro del $watch, pasamos una
+                    // función que hará de callback cuando el valor que
+                    // se monitoriza cambie. Como primer parámetro de
+                    // este callback nos llega el nuevo valor de la
+                    // variable, mientras que el anterior valor nos
+                    // llega como segundo parámetro.
+                    function(valorNuevo, valorAnterior) {
+
+                        if (valorAnterior !== valorNuevo) {
+
+                            alert(valorNuevo);
+                        }
+                    }
+                );
+
                 scope.obtenerRutaImagen = function(path) {
 
                     return ApiService.rutaImagen(path, 45);
